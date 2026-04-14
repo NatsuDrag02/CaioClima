@@ -5,10 +5,9 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  CartesianGrid,
-  Defs,
-  LinearGradient
+  CartesianGrid
 } from 'recharts';
+
 
 export default function HistoryChart({ historyData }: { historyData: any[] }) {
   if (!historyData || historyData.length === 0) return null;
