@@ -5,9 +5,10 @@ import HistoryChart from '../components/HistoryChart';
 
 export default function Dashboard() {
   const [station, setStation] = useState('A701');
-  const [weather, setWeather] = useState(null);
-  const [chartData, setChartData] = useState([]);
+  const [weather, setWeather] = useState<any>(null);
+  const [chartData, setChartData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   const fetchWeather = async () => {
     setLoading(true);
@@ -20,12 +21,13 @@ export default function Dashboard() {
       setWeather(data);
 
       if (data.hourly) {
-        const history = data.hourly.time.slice(0, 12).map((t, i) => ({
+        const history = data.hourly.time.slice(0, 12).map((t: string, i: number) => ({
           time: new Date(t).getHours() + 'h',
           temp: data.hourly.temperature_2m[i]
         }));
         setChartData(history);
       }
+
     } catch (e) {
       console.error(e);
     } finally {
